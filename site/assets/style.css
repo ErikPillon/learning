@@ -1,0 +1,155 @@
+/* Design tokens and site chrome.
+ *
+ * Hand-written, NOT generated. `tracker build` emits index.html against these
+ * class names and copies this file into site/ unchanged. Keep the contract in
+ * tracker/DESIGN.md in sync with any change here.
+ */
+
+:root {
+  /* spacing: 4px scale */
+  --s1: 0.25rem; --s2: 0.5rem;  --s3: 0.75rem; --s4: 1rem;
+  --s6: 1.5rem;  --s8: 2rem;    --s12: 3rem;   --s16: 4rem;
+
+  /* type: one family, 5 sizes, 2 weights */
+  --font: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  --t-xs: 0.8125rem; --t-sm: 0.9375rem; --t-base: 1rem;
+  --t-lg: 1.375rem;  --t-xl: 2.5rem;
+
+  /* color: neutral surface, one accent, semantic reserved for meaning */
+  --bg: #fcfcfa;
+  --surface: #ffffff;
+  --border: #e2e0db;
+  --text: #1c1b19;
+  --text-muted: #5d5a54;
+  --accent: #a8431a;
+  --accent-soft: #f3e6df;
+  --rust: #a8431a;
+  --julia: #3a6ea8;
+  --radius: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171614;
+    --surface: #201f1c;
+    --border: #35332e;
+    --text: #f2f0ec;
+    --text-muted: #a8a49c;
+    --accent: #e8824f;
+    --accent-soft: #2e2219;
+    --rust: #e8824f;
+    --julia: #7aa8d8;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #171614; --surface: #201f1c; --border: #35332e;
+  --text: #f2f0ec; --text-muted: #a8a49c;
+  --accent: #e8824f; --accent-soft: #2e2219;
+  --rust: #e8824f; --julia: #7aa8d8;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: var(--t-base)/1.6 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 62ch;
+  margin: 0 auto;
+  padding: var(--s16) var(--s4) var(--s12);
+}
+@media (max-width: 480px) { .wrap { padding-top: var(--s8); } }
+
+/* --- header --- */
+.site-title {
+  font-size: clamp(2rem, 7.5vw, var(--t-xl));
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--s3);
+}
+.lede { font-size: var(--t-base); color: var(--text-muted); margin: 0 0 var(--s12); }
+.lede strong { color: var(--text); font-weight: 600; }
+
+/* --- progress --- */
+.progress-label {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: var(--s4); margin-bottom: var(--s2);
+  font-size: var(--t-sm); color: var(--text-muted);
+}
+.progress-label b { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+.progress-track {
+  height: 6px; border-radius: 999px;
+  background: var(--border); overflow: hidden;
+}
+.progress-fill { height: 100%; background: var(--accent); border-radius: 999px; }
+
+/* --- stat tiles: 3-4 max, see DESIGN.md --- */
+.tiles {
+  display: grid; gap: var(--s4);
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  margin: var(--s8) 0;
+}
+.tile {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: var(--s4);
+}
+.tile-value {
+  font-size: var(--t-lg); font-weight: 600;
+  font-variant-numeric: tabular-nums; line-height: 1.2;
+}
+.tile-label { font-size: var(--t-xs); color: var(--text-muted); margin-top: var(--s1); }
+
+/* --- empty state: onboarding, not an error (ui-ux 5.2) --- */
+.empty {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: var(--s6);
+  margin: var(--s8) 0;
+}
+.empty h2 { font-size: var(--t-base); font-weight: 600; margin: 0 0 var(--s2); }
+.empty p { color: var(--text-muted); font-size: var(--t-sm); margin: 0 0 var(--s4); }
+.empty p:last-child { margin-bottom: 0; }
+.empty ol { color: var(--text-muted); font-size: var(--t-sm); margin: 0; padding-left: var(--s6); }
+.empty li + li { margin-top: var(--s2); }
+
+code, .mono { font-family: var(--mono); font-size: 0.9em; }
+code {
+  background: var(--accent-soft); color: var(--text);
+  padding: 0.1em 0.35em; border-radius: 4px;
+}
+
+/* --- language chips: never color alone (ui-ux 4, 9) --- */
+.chip {
+  display: inline-flex; align-items: center; gap: var(--s1);
+  font-size: var(--t-xs); color: var(--text-muted);
+}
+.chip::before {
+  content: ""; width: 8px; height: 8px; border-radius: 2px;
+  background: var(--text-muted);
+}
+.chip-rust::before { background: var(--rust); border-radius: 2px; }
+.chip-julia::before { background: var(--julia); border-radius: 999px; }
+
+/* --- links --- */
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px;
+}
+
+footer {
+  margin-top: var(--s16); padding-top: var(--s6);
+  border-top: 1px solid var(--border);
+  font-size: var(--t-xs); color: var(--text-muted);
+}
+footer p { margin: 0 0 var(--s2); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
