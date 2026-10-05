@@ -15,6 +15,7 @@ rust/leetcode/     LeetCode, Rust only (week 12)
 julia/euler/       Project Euler: p001.jl, p002.jl, ... (Fri/weekend)
 tracker/           Rust CLI, built in weeks 9-11
 notes/             one markdown file per concept
+plan/              week-NN.md, the six sessions for that week
 site/              static site, output of `tracker build`
 log.toml           single source of truth for all stats
 LEARNING_PROJECT.md  the full plan and the tutor's briefing
