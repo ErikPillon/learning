@@ -19,6 +19,7 @@ site/              static site, output of `tracker build`
 log.toml           single source of truth for all stats
 LEARNING_PROJECT.md  the full plan and the tutor's briefing
 SETUP.md           what is installed, what is missing, what is unverified
+WORKFLOW.md        how to run a session from the terminal, start to commit
 DEPLOY.md          how site/ reaches Vercel
 tracker/DESIGN.md  architecture of the CLI, written before the code
 ```
@@ -26,6 +27,8 @@ tracker/DESIGN.md  architecture of the CLI, written before the code
 Rustlings lives outside this repo; only completed topics get logged.
 
 ## Daily loop
+
+Full version, with the commands, in [WORKFLOW.md](WORKFLOW.md).
 
 1. Solve. Make the tests or the answer pass.
 2. Rust days: `cargo fmt` && `cargo clippy`, fix the warnings.
