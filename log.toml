@@ -1,0 +1,32 @@
+# log.toml — the single source of truth for all learning stats.
+#
+# One [[solve]] entry per session. Added by hand until `tracker add` exists
+# (week 9). Nothing here is ever scraped from Exercism, Euler or LeetCode.
+#
+# Schema for each entry:
+#   date     = YYYY-MM-DD   (TOML local date, unquoted)
+#   platform = "euler" | "exercism" | "rustlings" | "leetcode" | "project"
+#   problem  = string       (Euler number, Exercism slug, Rustlings topic, ...)
+#   language = "julia" | "rust"
+#   minutes  = integer
+#   concepts = [string, ...]
+#   notes    = string       (repo-relative path into notes/, optional)
+#
+# Example (do not uncomment — keep this file free of fake entries):
+#
+#   [[solve]]
+#   date = 2026-10-09
+#   platform = "euler"
+#   problem = "1"
+#   language = "julia"
+#   minutes = 25
+#   concepts = ["comprehensions", "ranges"]
+#   notes = "notes/julia-comprehensions.md"
+
+[meta]
+start_date = 2026-10-05
+weeks = 12
+sessions_per_week = 6
+target_sessions = 72
+
+# --- entries below, oldest first ---

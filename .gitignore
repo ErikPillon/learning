@@ -1,0 +1,20 @@
+# Rust
+target/
+**/target/
+Cargo.lock.orig
+
+# Julia
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+/julia/**/Manifest.toml
+
+# Exercism metadata (keep solutions, drop tooling state)
+.exercism/
+
+# Node / Vercel (site deployment only)
+node_modules/
+.vercel/
+
+# macOS
+.DS_Store
