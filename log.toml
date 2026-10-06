@@ -30,3 +30,19 @@ sessions_per_week = 6
 target_sessions = 72
 
 # --- entries below, oldest first ---
+
+[[solve]]
+date = 2026-10-07
+platform = "project"
+problem = "setup"
+language = "rust"
+minutes = 15
+concepts = ["toolchain"]
+
+[[solve]]
+date = 2026-10-07
+platform = "rustlings"
+problem = "variables"
+language = "rust"
+minutes = 30
+concepts = ["bindings", "mutability"]
